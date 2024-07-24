@@ -71,6 +71,8 @@
         </div>
     </div>
 </div>
+
+
 <script defer src="/CRUDJS/src/js/funciones.js"></script>
 <script defer src="/CRUDJS/src/js/clientes/index.js"></script>
 <?php include_once '../../includes/footer.php' ?>
