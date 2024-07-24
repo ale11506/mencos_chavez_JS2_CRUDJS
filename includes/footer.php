@@ -1,21 +1,25 @@
 <?php
+
 require '../../models/clientes.php';
 header('Content-Type: application/json; charset=UTF-8');
 
 $metodo = $_SERVER['REQUEST_METHOD'];
 $tipo = $_REQUEST['tipo'];
 
-echo json_encode($_GET);
-exit;
 try {
     switch ($metodo) {
         case 'POST':
-            $cliente = new clientes($_POST);
+            $cliente = new cliente($_POST);
             switch ($tipo) {
                 case '1':
 
                     $ejecucion = $cliente->guardar();
                     $mensaje = "Guardado correctamente";
+                    break;
+                case '2':
+
+                    $ejecucion = $cliente->modificar();
+                    $mensaje = "Modificado correctamente";
                     break;
 
                 default:
@@ -27,10 +31,11 @@ try {
                 "mensaje" => $mensaje,
                 "codigo" => 1,
             ]);
+
             break;
         case 'GET':
             http_response_code(200);
-            $cliente = new clientes($_GET);
+            $cliente = new cliente($_GET);
             $clientes = $cliente->buscar();
             echo json_encode($clientes);
             break;

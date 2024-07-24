@@ -1,74 +1,75 @@
 <?php
 require_once 'conexion.php';
 
-class clientes extends Conexion
+class cliente extends Conexion
 {
-    public $cliente_id;
-    public $cliente_nombre;
-    public $cliente_apellido;
-    public $cliente_nit;
-    public $cliente_telefono;
-    public $cliente_situacion;
+    public $cli_id;
+    public $cli_nombre;
+    public $cli_apellido;
+    public $cli_nit;
+    public $cli_telefono;
+    public $cli_situacion;
 
 
     public function __construct($args = [])
     {
-        $this->cliente_id = $args['cliente_id'] ?? null;
-        $this->cliente_nombre = $args['cliente_nombre'] ?? '';
-        $this->cliente_apellido = $args['cliente_apellido'] ?? '';
-        $this->cliente_nit = $args['cliente_nit'] ?? '';
-        $this->cliente_telefono = $args['cliente_telefono'] ?? '';
-        $this->cliente_situacion = $args['cliente_situacion'] ?? '';
+        $this->cli_id = $args['cli_id'] ?? null;
+        $this->cli_nombre = $args['cli_nombre'] ?? '';
+        $this->cli_apellido = $args['cli_apellido'] ?? '';
+        $this->cli_nit = $args['cli_nit'] ?? '';
+        $this->cli_telefono = $args['cli_telefono'] ?? '';
+        $this->cli_situacion = $args['cli_situacion'] ?? '';
     }
 
     public function guardar()
     {
-        $sql = "INSERT INTO clientes(cliente_nombre, cliente_apellido, cliente_nit, cliente_telefono) values('$this->cliente_nombre','$this->cliente_apellido','$this->cliente_nit','$this->cliente_telefono')";
+        $sql = "INSERT INTO clientes(cli_nombre, cli_apellido, cli_nit, cli_telefono) values('$this->cli_nombre', '$this->cli_apellido', '$this->cli_nit', '$this->cli_telefono')";
         $resultado = self::ejecutar($sql);
         return $resultado;
     }
 
     public function buscar()
     {
-        $sql = "SELECT * from clientes where cliente_situacion = 1 ";
+        $sql = "SELECT * from clientes where cli_situacion = 1 ";
 
-        if ($this->cliente_nombre != '') {
-            $sql .= " and cliente_nombre like '%$this->cliente_nombre%' ";
+        if ($this->cli_nombre != '') {
+            $sql .= " and cli_nombre like '%$this->cli_nombre%' ";
         }
 
-        if ($this->cliente_apellido != '') {
-            $sql .= " and cliente_apellido = $this->cliente_apellido ";
+        if ($this->cli_apellido != '') {
+            $sql .= " and cli_apellido like '%$this->cli_apellido%' ";
         }
 
-        if ($this->cliente_nit != '') {
-            $sql .= " and cliente_nit = $this->cliente_nit ";
+        if ($this->cli_nit != '') {
+            $sql .= " and cli_nit = $this->cli_nit ";
         }
 
-        if ($this->cliente_telefono != '') {
-            $sql .= " and cliente_telefono = $this->cliente_telefono ";
+        if ($this->cli_telefono != '') {
+            $sql .= " and cli_telefono = $this->cli_telefono ";
         }
 
-        if ($this->cliente_id != null) {
-            $sql .= " and cliente_id = $this->cliente_id ";
+        if ($this->cli_id != null) {
+            $sql .= " and cli_id = $this->cli_id ";
         }
 
         $resultado = self::servir($sql);
         return $resultado;
+        
     }
 
     public function modificar()
     {
-        $sql = "UPDATE clientes SET cliente_nombre = '$this->cliente_nombre', cliente_apellido = $this->cliente_apellido where cliente_id = $this->cliente_id";
+    $sql = "UPDATE clientes SET cli_nombre = '$this->cli_nombre', cli_apellido = '$this->cli_apellido', cli_nit = '$this->cli_nit', cli_telefono = '$this->cli_telefono' where cli_id = '$this->cli_id'";
 
-        $resultado = self::ejecutar($sql);
-        return $resultado;
+    $resultado = self::ejecutar($sql);
+    return $resultado;
     }
 
     public function eliminar()
     {
-        $sql = "UPDATE clientes SET cliente_situacion = 0 where cliente_id = $this->cliente_id";
+         $sql = "UPDATE clientes SET cli_situacion = 0 where cli_id = $this->cli_id";
 
-        $resultado = self::ejecutar($sql);
-        return $resultado;
-    }
+         $resultado = self::ejecutar($sql);
+         return $resultado;
+     }
 }

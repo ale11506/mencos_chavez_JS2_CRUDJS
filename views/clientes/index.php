@@ -3,29 +3,29 @@
     <h1 class="text-center">Formulario de Clientes</h1>
     <div class="row justify-content-center mb-3">
         <form class="col-lg-8 border bg-light p-3">
-            <input type="hidden" name="cliente_id" id="cliente_id">
+            <input type="hidden" name="cli_id" id="cli_id">
             <div class="row mb-3">
                 <div class="col">
-                    <label for="cliente_nombre">Nombre del clienteente</label>
-                    <input type="text" name="cliente_nombre" id="cliente_nombre" class="form-control" required>
+                    <label for="cli_nombre">Nombre del cliente</label>
+                    <input type="text" name="cli_nombre" id="cli_nombre" class="form-control" required>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col">
-                    <label for="cliente_apellido">Apellido del clienteente</label>
-                    <input type="text" name="cliente_apellido" id="cliente_apellido" class="form-control" required>
+                    <label for="cli_apellido">Apellido del cliente</label>
+                    <input type="text" name="cli_apellido" id="cli_apellido" class="form-control" required>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col">
-                    <label for="cliente_nit">Nit del clienteente</label>
-                    <input type="text" name="cliente_nit" id="cliente_nit" class="form-control" required>
+                    <label for="cli_nit">Nit del cliente</label>
+                    <input type="number" name="cli_nit" id="cli_nit" class="form-control" required>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col">
-                    <label for="cliente_telefono">Telefono del clienteente</label>
-                    <input type="text" name="cliente_telefono" id="cliente_telefono" class="form-control" required>
+                    <label for="cli_telefono">Telefono del cliente</label>
+                    <input type="number" name="cli_telefono" id="cli_telefono" class="form-control" required>
                 </div>
             </div>
             <div class="row justify-content-center mb-3">
@@ -50,12 +50,14 @@
     <div class="row justify-content-center">
         <div class="col-lg-8 table-responsive">
             <h2 class="text-center">Listado de clientes</h2>
-            <table class="table table-bordered table-hover" id="tablaclientes">
+            <table class="table table-bordered table-hover" id="tablaClientes">
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Descripción</th>
-                        <th>apellido</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>nit</th>
+                        <th>telefono</th>
                         <th>Modificar</th>
                         <th>Eliminar</th>
                     </tr>
@@ -69,6 +71,6 @@
         </div>
     </div>
 </div>
-<script defer src="/src/js/funciones.js"></script>
-<script defer src="../../src/js/clientes/index.js"></script>
+<script defer src="/CRUDJS/src/js/funciones.js"></script>
+<script defer src="/CRUDJS/src/js/clientes/index.js"></script>
 <?php include_once '../../includes/footer.php' ?>
